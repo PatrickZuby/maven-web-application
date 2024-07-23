@@ -11,11 +11,9 @@
 <body>
 <h1 align="center">Welcome to Tesla Web application Project 2024.</h1>
 <h1 align="center">Landmark Software Solutions (LSS)  are developing and supporting quality Software Solutions to millions of clients globally.
-	           We are raising millionaires and billionaires in IT professionals.
-        	   Landmark Technologies, the Pride of Africa.
-	           Class36 DevOps MasterClass started on April 13, 2024.
-                   Class37 DevOps MasterClass will start on July 13, 2024.
-                   Please invite all your contacts and friends for this life changing course.
+	           We are raising millionaires and billionaires in IT professionals. Landmark Technologies, the Pride of Africa. Class36 DevOps MasterClass started on April 13, 2024. 
+		Class37 DevOps MasterClass will start on July 13, 2024.
+                Please invite all your contacts and friends for this life changing course.
 </h1>
 <hr>
 <br>
