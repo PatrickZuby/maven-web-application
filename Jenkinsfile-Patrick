@@ -1,0 +1,52 @@
+pipeline{
+    agent any
+    tools{
+        maven 'maven'
+    }
+    
+    stages{
+        stage('1. CloneCode'){
+            steps{
+                sh "echo 'cloning the latest application version' "
+                git "https://github.com/PatrickZuby/maven-web-application"
+            }
+        }
+        
+        stage('2. MvnBuild'){
+            steps{
+                sh "echo 'running JUnit-test-cases' "
+                sh "echo 'testing must passed to create artifacts ' "
+                sh "mvn clean package"
+            }
+        }
+        
+        stage('3.CodeQuality'){
+            steps{
+                sh "echo 'Perfoming CodeQualityAnalysis' "
+                //sh "mvn sonar:sonar"
+            }
+        }
+        
+        stage('4.UploadArtifacts'){
+            steps{
+                sh "mvn deploy"
+            }
+        }
+        
+        stage('5.Deploy2UAT'){
+            steps{
+                deploy adapters: [tomcat9(credentialsId: 'f92d1879-4c71-4117-8519-7484fd12a916', path: '', url: 'http://3.84.158.209:8080/')], contextPath: null, war: 'target/*war'
+            }
+        }
+        
+        stage('6.ManualApproval'){
+            steps{
+                sh "echo 'Please review the application performance' "
+                timeout(time:600, unit:'MINUTES') {
+                input message: 'Application ready for deployment, Please review and approve'
+            }
+        }
+                
+    }
+}
+}
